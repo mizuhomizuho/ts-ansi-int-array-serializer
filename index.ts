@@ -44,7 +44,6 @@ class Convertor {
     }
 
     public getString(arrayValues: number[]) {
-        const symbolsArray = this.symbolsArray;
         const result: string[] = [];
         arrayValues.forEach((value) => {
             result.push(this.toBase(value));
