@@ -1,7 +1,7 @@
 # TS ANSI-int-Array serializer
 
 ```ts
-const instance: Convertor = new Convertor();
+const instance = new Convertor();
 
 const arrayLength = 1000;
 const elementValueMin = 1;
