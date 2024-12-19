@@ -2,9 +2,9 @@ class Convertor {
 
     private _symbolsArray: string[];
 
-    private readonly ANSI_LENGTH = 127;
+    private readonly ASCII_LENGTH = 127;
 
-    private readonly SEPARATOR = String.fromCharCode(this.ANSI_LENGTH);
+    private readonly SEPARATOR = String.fromCharCode(this.ASCII_LENGTH);
 
     constructor() {
         this._symbolsArray = [];
@@ -13,7 +13,7 @@ class Convertor {
     private get symbolsArray(): string[] {
         if (!this._symbolsArray.length) {
             const symbolsArray: string[] = [];
-            for (let i = 0; i <= this.ANSI_LENGTH - 1; i++) {
+            for (let i = 0; i <= this.ASCII_LENGTH - 1; i++) {
                 symbolsArray.push(String.fromCharCode(i));
             }
             this.symbolsArray = symbolsArray;
@@ -75,3 +75,18 @@ class Convertor {
         return decodeResult;
     }
 }
+
+
+const instance = new Convertor();
+
+const arrayLength = 1000;
+const elementValueMin = 1;
+const elementValueMax = 300;
+
+const array = instance.getRandom(arrayLength, elementValueMin, elementValueMax);
+
+const encode = instance.getString(array);
+
+console.log(array);
+console.log(encode);
+console.log(instance.decode(encode));
