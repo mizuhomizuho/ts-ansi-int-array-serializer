@@ -27,7 +27,7 @@ export class Serializer {
 
     private toBase(number: number) {
         const symbolsArray = this.symbolsArray;
-        if (number == 0) {
+        if (number === 0) {
             return symbolsArray[0];
         }
         let result = "";
@@ -39,10 +39,9 @@ export class Serializer {
     }
 
     public getRandom(arrayLength: number, min: number, max: number) {
-        const numbersArray: number[] = Array.from({length: arrayLength}, () =>
+        return Array.from({length: arrayLength}, () =>
             Math.floor(Math.random() * (max - min + 1)) + min
         );
-        return numbersArray;
     }
 
     public getString(arrayValues: number[]) {
