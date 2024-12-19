@@ -25,7 +25,7 @@ export class Serializer {
         this._symbolsArray = value;
     }
 
-    private toBase(number: number) {
+    private encodeValue(number: number) {
         const symbolsArray = this.symbolsArray;
         if (typeof symbolsArray[number] === 'string') {
             return symbolsArray[number];
@@ -47,7 +47,7 @@ export class Serializer {
     public getString(arrayValues: number[]) {
         const result: string[] = [];
         arrayValues.forEach((value) => {
-            result.push(this.toBase(value));
+            result.push(this.encodeValue(value));
         });
         return result.join(this.SEPARATOR);
     }

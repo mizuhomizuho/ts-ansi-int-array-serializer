@@ -11,4 +11,4 @@ const array = instanceSerializer.getRandom(arrayLength, elementValueMin, element
 
 const encode = instanceSerializer.getString(array);
 
-console.log(encode, isEqual(array, instanceSerializer.decode(encode)));
+console.log(isEqual(array, instanceSerializer.decode(encode)));
