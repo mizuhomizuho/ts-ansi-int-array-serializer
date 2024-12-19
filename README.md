@@ -1,6 +1,8 @@
 # TS ASCII-int-Array serializer
 
 ```ts
+import {Convertor} from "./Convertor";
+
 const instance = new Convertor();
 
 const arrayLength = 1000;
