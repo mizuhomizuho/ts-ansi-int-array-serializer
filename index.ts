@@ -1,4 +1,4 @@
-
+import isEqual from "lodash.isequal";
 import {Serializer} from "./Serializer";
 
 const instanceSerializer = new Serializer();
@@ -11,6 +11,4 @@ const array = instanceSerializer.getRandom(arrayLength, elementValueMin, element
 
 const encode = instanceSerializer.getString(array);
 
-console.log(array);
-console.log(encode);
-console.log(instanceSerializer.decode(encode));
+console.log(isEqual(array, instanceSerializer.decode(encode)));
