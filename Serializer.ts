@@ -27,13 +27,13 @@ export class Serializer {
 
     private toBase(number: number) {
         const symbolsArray = this.symbolsArray;
-        if (number === 0) {
-            return symbolsArray[0];
+        if (typeof symbolsArray[number] === 'string') {
+            return symbolsArray[number];
         }
         let result = "";
         while (number > 0) {
             result = symbolsArray[number % symbolsArray.length] + result;
-            number = parseInt('' + number / symbolsArray.length);
+            number = parseInt("" + number / symbolsArray.length);
         }
         return result;
     }
