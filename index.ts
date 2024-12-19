@@ -23,15 +23,15 @@ class Convertor {
         this._symbolsArray = value;
     }
 
-    private toBase(number: number, base: number) {
+    private toBase(number: number) {
         const symbolsArray = this.symbolsArray;
         if (number == 0) {
             return symbolsArray[0];
         }
         let result = "";
         while (number > 0) {
-            result = symbolsArray[number % base] + result;
-            number = parseInt('' + number / base);
+            result = symbolsArray[number % symbolsArray.length] + result;
+            number = parseInt('' + number / symbolsArray.length);
         }
         return result;
     }
@@ -47,7 +47,7 @@ class Convertor {
         const symbolsArray = this.symbolsArray;
         const result: string[] = [];
         arrayValues.forEach((value) => {
-            result.push(this.toBase(value, symbolsArray.length));
+            result.push(this.toBase(value));
         });
         return result.join(this.SEPARATOR);
     }

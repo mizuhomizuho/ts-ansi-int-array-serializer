@@ -11,6 +11,7 @@ const array = instance.getRandom(arrayLength, elementValueMin, elementValueMax);
 
 const encode = instance.getString(array);
 
+console.log(array);
 console.log(encode);
 console.log(instance.decode(encode));
 ```
