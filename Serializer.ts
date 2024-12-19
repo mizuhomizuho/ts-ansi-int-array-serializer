@@ -2,9 +2,9 @@ export class Serializer {
 
     private _symbolsArray: string[];
 
-    private readonly ASCII_LENGTH = 127;
+    private readonly ASCII_LAST_INDEX = 127;
 
-    private readonly SEPARATOR = String.fromCharCode(this.ASCII_LENGTH);
+    private readonly SEPARATOR = String.fromCharCode(this.ASCII_LAST_INDEX);
 
     constructor() {
         this._symbolsArray = [];
@@ -13,7 +13,7 @@ export class Serializer {
     private get symbolsArray(): string[] {
         if (!this._symbolsArray.length) {
             const symbolsArray: string[] = [];
-            for (let i = 0; i <= this.ASCII_LENGTH - 1; i++) {
+            for (let i = 0; i <= this.ASCII_LAST_INDEX - 1; i++) {
                 symbolsArray.push(String.fromCharCode(i));
             }
             this.symbolsArray = symbolsArray;
