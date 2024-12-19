@@ -1,5 +1,11 @@
 # TS ASCII-int-Array serializer
 
+The class converts each number in the array from decimal to a 127-based numeral system using ASCII characters.
+
+Then, the class returns the serialized data as a string.
+
+The larger the value of an array element, the higher the compression percentage.
+
 ```ts
 import isEqual from "lodash.isequal";
 import {Serializer} from "./Serializer";
