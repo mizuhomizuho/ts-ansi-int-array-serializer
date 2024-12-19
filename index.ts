@@ -8,7 +8,10 @@ const elementValueMin = 1;
 const elementValueMax = 300;
 
 const array = instanceSerializer.getRandom(arrayLength, elementValueMin, elementValueMax);
+const encodeString = instanceSerializer.getString(array);
 
-const encode = instanceSerializer.getString(array);
+console.log(isEqual(array, instanceSerializer.decode(encodeString)));
 
-console.log(isEqual(array, instanceSerializer.decode(encode)));
+const compressionPercentage = encodeString.length / (array.join("").length / 100)
+
+console.log(compressionPercentage);
