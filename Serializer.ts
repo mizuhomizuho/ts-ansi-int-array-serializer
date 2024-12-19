@@ -1,4 +1,4 @@
-export class Convertor {
+export class Serializer {
 
     private _symbolsArray: string[];
 
@@ -39,7 +39,7 @@ export class Convertor {
     }
 
     public getRandom(arrayLength: number, min: number, max: number) {
-        const numbersArray: number[] = Array.from({ length: arrayLength }, () =>
+        const numbersArray: number[] = Array.from({length: arrayLength}, () =>
             Math.floor(Math.random() * (max - min + 1)) + min
         );
         return numbersArray;
