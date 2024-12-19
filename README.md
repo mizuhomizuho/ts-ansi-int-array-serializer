@@ -1,4 +1,4 @@
-# TS ANSI-int-Array serializer
+# TS ASCII-int-Array serializer
 
 ```ts
 const instance = new Convertor();
