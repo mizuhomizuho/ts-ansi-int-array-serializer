@@ -1,3 +1,6 @@
+import isEqual from "lodash.isequal";
+import {sizeof} from "sizeof";
+
 export class Serializer {
 
     private _symbolsArray: string[];
@@ -36,6 +39,29 @@ export class Serializer {
             number = parseInt("" + number / symbolsArray.length);
         }
         return result;
+    }
+
+    private range(from: number, to: number, step: number = 1): Iterable<number> {
+        return {
+            * [Symbol.iterator]() {
+                for (let val = from; val < to; val += step) {
+                    yield val;
+                }
+            }
+        }
+    }
+
+    public getPlot(sizeof: CallableFunction, value: number) {
+        const points: { x: number; y: number }[] = [];
+        const array: number[] = [];
+        for (const xIndex of this.range(0, 50)) {
+            array.push(value);
+            const encodeString = this.getString(array);
+            const sizeofArray = sizeof(array);
+            const compressionPercentage = (sizeofArray - sizeof(encodeString)) / (sizeofArray / 100);
+            points.push({x: xIndex, y: Math.round(compressionPercentage)});
+        }
+        return points;
     }
 
     public getRandom(arrayLength: number, min: number, max: number) {

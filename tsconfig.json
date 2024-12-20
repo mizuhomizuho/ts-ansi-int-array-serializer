@@ -1,4 +1,7 @@
 {
+  "files": [
+    "types/console-scatter-plot.d.ts"
+  ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 

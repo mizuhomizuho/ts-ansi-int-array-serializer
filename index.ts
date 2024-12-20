@@ -1,5 +1,7 @@
-import isEqual from "lodash.isequal";
 import {Serializer} from "./Serializer";
+import {sizeof} from "sizeof";
+import ScatterPlot from "console-scatter-plot";
+import isEqual from "lodash.isequal";
 
 const instanceSerializer = new Serializer();
 
@@ -12,6 +14,19 @@ const encodeString = instanceSerializer.getString(array);
 
 console.log(isEqual(array, instanceSerializer.decode(encodeString)));
 
-const compressionPercentage = encodeString.length / (array.join("").length / 100)
+[0, Number.MAX_SAFE_INTEGER].forEach((value) => {
+    console.log("Values: %s", value);
+    (new ScatterPlot({
+        xAxis: {label: "The size of the array"},
+        yAxis: {label: "Compression ratio"},
+        points: instanceSerializer.getPlot(sizeof, value).map(
+            pointObject => ({
+                ...pointObject,
+                marker: "+",
+                color: "red",
+            })
+        ),
+    })).print();
+});
 
-console.log(compressionPercentage);
+
