@@ -27,7 +27,7 @@ export class Serializer {
 
     private encodeValue(number: number) {
         const symbolsArray = this.symbolsArray;
-        if (typeof symbolsArray[number] === 'string') {
+        if (typeof symbolsArray[number] === "string") {
             return symbolsArray[number];
         }
         let result = "";
