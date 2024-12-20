@@ -1,6 +1,3 @@
-import isEqual from "lodash.isequal";
-import {sizeof} from "sizeof";
-
 export class Serializer {
 
     private _symbolsArray: string[];
@@ -53,13 +50,14 @@ export class Serializer {
 
     public getPlot(sizeof: CallableFunction, value: number) {
         const points: { x: number; y: number }[] = [];
+        const sizeofValue = sizeof(value);
         const array: number[] = [];
-        for (const xIndex of this.range(0, 50)) {
+        for (const lengthOfArray of this.range(0, 50)) {
             array.push(value);
             const encodeString = this.getString(array);
-            const sizeofArray = sizeof(array);
-            const compressionPercentage = (sizeofArray - sizeof(encodeString)) / (sizeofArray / 100);
-            points.push({x: xIndex, y: Math.round(compressionPercentage)});
+            const sizeOfArray = sizeofValue * (lengthOfArray + 1);
+            const compressionPercentage = (sizeOfArray - sizeof(encodeString)) / (sizeOfArray / 100);
+            points.push({x: lengthOfArray, y: Math.round(compressionPercentage)});
         }
         return points;
     }
